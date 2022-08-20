@@ -33,6 +33,7 @@ class LoginScreen extends StatelessWidget {
             ),
             ChangeNotifierProvider(
               create: (_) => LoginFormprovider(),
+              //lo que esta dentro de loginfrom es al que se le va a aplicar el provider
               child: _LoginForm(),
             )
           ],
@@ -55,6 +56,7 @@ class LoginScreen extends StatelessWidget {
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //instancia de losginfromprovider
     final loginForm = Provider.of<LoginFormprovider>(context);
     return Container(
       child: Form(
@@ -91,6 +93,7 @@ class _LoginForm extends StatelessWidget {
                     hintText: '******',
                     labelText: 'Contraeña',
                     prefixIcon: Icons.lock_clock_outlined),
+                    //se alamacena en el login from provider la contraseña
                 onChanged: (value) => loginForm.password = value,
                 validator: (value) {
                   if (value != null && value.length >= 6) return null;
